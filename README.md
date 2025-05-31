@@ -3,8 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Google Publisher Tag (GPT) Script -->
-    
     <title>KiranaKart POS</title>
     <style>
     body {
@@ -1357,7 +1355,10 @@
             <button onclick="hideModal()">Close</button>
         </div>
     </div>
-
+<script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+    <script>
+        window.googletag = window.googletag || { cmd: [] };
+    </script>
     <script>
     // State variables
     let users = JSON.parse(localStorage.getItem('users')) || [];
