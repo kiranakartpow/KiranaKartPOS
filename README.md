@@ -1357,8 +1357,14 @@
     let currentUser = null;
 
 
+adView = new AdView(this);
+adView.setAdSize(AdSize.SMART_BANNER);
+adView.setAdUnitId("YOUR_AD_UNIT_ID");
+adView.loadAd(new AdRequest.Builder().build());
 
-
+layout.addView(webView);
+layout.addView(adView);
+adParams.setMargins(0, 20, 0, 0); // 20px margin above the ad
 
 
 
