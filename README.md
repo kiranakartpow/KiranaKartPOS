@@ -13,20 +13,8 @@
         color: #333;
         min-height: 100vh;
         box-sizing: border-box;
-        }
-  /* Banner Ad Styling */
-#banner-ad {
-    background-color: #f5f5f5;
-    padding: 10px 0;
-    display: none; /* Hidden until ad loads */
     }
 
-
-@media only screen and (max-width: 600px) {
-    #banner-ad {
-        padding: 5px 0;
-    }
-}
     .container {
         background: rgba(255, 255, 255, 0.95);
         padding: 30px;
@@ -1355,10 +1343,7 @@
             <button onclick="hideModal()">Close</button>
         </div>
     </div>
-<script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
-    <script>
-        window.googletag = window.googletag || { cmd: [] };
-    </script>
+
     <script>
     // State variables
     let users = JSON.parse(localStorage.getItem('users')) || [];
@@ -1370,6 +1355,8 @@
     let alertedItems = new Set();
     let selectedItemIndex = -1;
     let currentUser = null;
+
+
 
 
 
@@ -2690,100 +2677,6 @@ function getBotResponse(message) {
 
 
 
-
-
-
-
-
-
-/ Ad Initialization
-function initializeBannerAd() {
-    googletag.cmd.push(function() {
-        var bannerSlot = googletag.defineSlot(
-           ca-app-pub-3940256099942544/9214589741
-
- // Test Ad Unit ID
-            [[320, 50], [728, 90]], // Responsive sizes
-            'banner-ad'
-        )
-        .addService(googletag.pubads());
-        googletag.pubads().enableSingleRequest();
-        googletag.pubads().set('page_url', window.location.href);
-        googletag.enableServices();
-        googletag.display('banner-ad');
-        document.getElementById('banner-ad').style.display = 'block';
-        setInterval(function() {
-            googletag.pubads().refresh([bannerSlot]);
-            console.log('Banner ad refreshed');
-        }, 30000); // 30 seconds
-        googletag.pubads().addEventListener('slotRenderEnded', function(event) {
-            if (event.isEmpty) {
-                document.getElementById('banner-ad').style.display = 'none';
-                console.log('Banner ad failed to load');
-            } else {
-                console.log('Banner ad loaded');
-            }
-        });
-    });
-}
-
-function loadAds() {
-    if (navigator.onLine && currentUser) {
-        initializeBannerAd();
-    } else {
-        console.log('Offline or user not logged in, ads not loaded');
-        document.getElementById('banner-ad').style.display = 'none';
-    }
-}
-
-// Handle online/offline states
-window.addEventListener('online', () => {
-    if (currentUser) {
-        loadAds();
-    }
-});
-window.addEventListener('offline', () => {
-    document.getElementById('banner-ad').style.display = 'none';
-});
-
-// Sync offline queue when back online
-window.addEventListener('online', () => {
-    if (offlineQueue.length) {
-        offlineQueue.forEach(action => {
-            if (action === 'cart') {
-                cart.push(action.item);
-                const inventoryItem = inventory.find(item => item.name === action.item.name && item.type === item.action.item.type);
-                if (inventoryItem) {
-                    if (action.item.type === 'loose') {
-                        inventoryItem.remainingWeight -= item.action.weight;
-                    } else {
-                        inventoryItem.quantityremainingQuantity -= action.item.quantity;
-                    }
-                    checkStockAlert(inventoryItem);
-                }
-            }
-        });
-        offlineQueue = [];
-        localStorage.setItem('offlineQueue', JSON.stringify(offlineQueue));
-        localStorage.setItem('inventory', JSON.stringify(inventory));
-        updateCart();
-        updateStock();
-        updateLowStock();
-    }
-});
-
-// Toggle input fields based on item type
-document.getElementById('type-item').addEventListener('change', function() => {
-    const type = document.getElementById('type-item').value;
-    document.getElementById('item-weight').style.display = type === 'loose' ? 'block' : 'none';
-    document.getElementById('item-quantity').style.display = type === 'packet' ? 'block' : 'none';
-});
-
-
-if (!googletag.apiReady) {
-    console.log('Ad blocker detected, skipping ad load');
-    document.getElementById('banner-ad').style.display = 'none';
-}
 
 
 
