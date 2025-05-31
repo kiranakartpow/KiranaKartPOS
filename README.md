@@ -4,10 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Google Publisher Tag (GPT) Script -->
-    <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
-    <script>
-        window.googletag = window.googletag || { cmd: [] };
-    </script>
+    
     <title>KiranaKart POS</title>
     <style>
     body {
