@@ -2702,7 +2702,9 @@ function getBotResponse(message) {
 function initializeBannerAd() {
     googletag.cmd.push(function() {
         var bannerSlot = googletag.defineSlot(
-            '/YOUR_ADMOB_APP_ID/ca-app-pub-3940256099942544/6300978111', // Test Ad Unit ID
+           ca-app-pub-3940256099942544/9214589741
+
+ // Test Ad Unit ID
             [[320, 50], [728, 90]], // Responsive sizes
             'banner-ad'
         )
